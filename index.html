@@ -1,0 +1,112 @@
+# generate_birthday_site.py
+
+html_code = """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Cerlly SY 🎉</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #ffe6f0;
+      font-family: 'Quicksand', sans-serif;
+      text-align: center;
+      padding: 40px;
+      color: #5a005a;
+    }
+    h1, h2, h3 {
+      font-family: 'Pacifico', cursive;
+      color: #d63384;
+    }
+    #clickArea {
+      background-color: #ffd6e7;
+      padding: 20px 40px;
+      border-radius: 20px;
+      font-size: 24px;
+      cursor: pointer;
+      display: inline-block;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: all 0.2s ease;
+    }
+    #clickArea:hover {
+      background-color: #ffbfd9;
+      transform: scale(1.05);
+    }
+    #message {
+      margin-top: 30px;
+      font-size: 18px;
+      color: #333;
+      min-height: 40px;
+    }
+    #final {
+      display: none;
+      margin-top: 40px;
+    }
+    .photo, .gift {
+      max-width: 90%;
+      border-radius: 15px;
+      margin-top: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .closing {
+      margin-top: 30px;
+      font-size: 20px;
+      color: #912f56;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎀 Happy Birthday Cerlly SY 🎀</h1>
+  <p>A little surprise from your favorite sister 💕</p>
+
+  <div id="clickArea">Klik aku terus, bestie! 💖</div>
+  <div id="message"></div>
+
+  <div id="final">
+    <h2>🎉 Happy 22nd birthday, lil troublemaker!</h2>
+    <p>You're not a teenager anymore, but you're still just as chaotic 😜</p>
+    <img src="IMG_5263.png" alt="Foto Cerlly & Teman" class="photo" />
+    <h3>🎁 Hadiah untukmu:</h3>
+    <p>✨ One Day Trip ke Bandung ✨</p>
+    <p><strong>Berangkat: 18 Malam — Pulang: 19 Malam</strong></p>
+    <img src="bandung-trip.png" alt="Trip ke Bandung" class="gift" />
+    <p class="closing">I can't wait to go on this trip with you! 💕</p>
+  </div>
+
+  <script>
+    const clickArea = document.getElementById("clickArea");
+    const message = document.getElementById("message");
+    const final = document.getElementById("final");
+
+    const texts = [
+      "Yaelah klik mulu... 🙄",
+      "Ngapain sih klik terus? 😒",
+      "Capek tau... 😤",
+      "Masih aja nge-klik? 😆",
+      "Gak bosen apa? 😩",
+      "Serius nih? Lagi? 😂",
+      "Hadeh...",
+      "Klik ke-8 nih...",
+      "Klik terakhir ya...",
+      "OKE DEH! HADIAHNYA INI!!! 🎁"
+    ];
+
+    let count = 0;
+    clickArea.addEventListener("click", () => {
+      if (count < texts.length) {
+        message.textContent = texts[count];
+        count++;
+        if (count === texts.length) {
+          final.style.display = "block";
+          clickArea.style.display = "none";
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
