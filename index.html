@@ -95,7 +95,7 @@
 
   <div id="final">
     <div class="tabs">
-      <button class="tab-button active" data-tab="tab1">🎁 Oke deh hadiahnya ini</button>
+     <button class="tab-button active" data-tab="tab1" id="openTab1">🎁 Oke deh hadiahnya ini</button>
       <button class="tab-button" data-tab="tab2">🎉 Happy 22nd birthday</button>
       <button class="tab-button" data-tab="tab3">🧳 One Day Trip ke Bandung</button>
     </div>
@@ -169,6 +169,51 @@
         document.getElementById(target).style.display = "block";
       });
     });
+  document.getElementById("openTab1").addEventListener("click", function () {
+    const newWindow = window.open("", "_blank");
+    newWindow.document.write(`
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <title>🎁 Hadiahmu</title>
+        <style>
+          body {
+            background-color: #ffe6f0;
+            font-family: 'Quicksand', sans-serif;
+            color: #5a005a;
+            text-align: center;
+            padding: 40px;
+          }
+          h2 {
+            font-family: 'Pacifico', cursive;
+            color: #d63384;
+          }
+          .gift {
+            max-width: 90%;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+          }
+          .closing {
+            margin-top: 30px;
+            font-size: 20px;
+            color: #912f56;
+            font-style: italic;
+          }
+        </style>
+      </head>
+      <body>
+        <h2>🎁 Hadiah untukmu:</h2>
+        <p>✨ One Day Trip ke Bandung ✨</p>
+        <p><strong>Berangkat: 18 Malam — Pulang: 19 Malam</strong></p>
+        <img src="bandung-trip.png" alt="Trip ke Bandung" class="gift" />
+        <p class="closing">I can't wait to go on this trip with you! 💕</p>
+      </body>
+      </html>
+    `);
+    newWindow.document.close();
+  });
   </script>
 
 </body>
