@@ -1,6 +1,3 @@
-# generate_birthday_site.py
-
-html_code = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,6 +53,36 @@ html_code = """
       color: #912f56;
       font-style: italic;
     }
+
+    /* Tabs */
+    .tabs {
+      margin-top: 30px;
+    }
+
+    .tab-button {
+      background-color: #ffccde;
+      border: none;
+      padding: 10px 20px;
+      margin: 0 5px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      font-family: 'Quicksand', sans-serif;
+      transition: background 0.3s ease;
+    }
+
+    .tab-button:hover {
+      background-color: #ffaac4;
+    }
+
+    .tab-button.active {
+      background-color: #d63384;
+      color: white;
+    }
+
+    .tab-content {
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
@@ -67,14 +94,35 @@ html_code = """
   <div id="message"></div>
 
   <div id="final">
-    <h2>🎉 Happy 22nd birthday, lil troublemaker!</h2>
-    <p>You're not a teenager anymore, but you're still just as chaotic 😜</p>
-    <img src="IMG_5263.png" alt="Foto Cerlly & Teman" class="photo" />
-    <h3>🎁 Hadiah untukmu:</h3>
-    <p>✨ One Day Trip ke Bandung ✨</p>
-    <p><strong>Berangkat: 18 Malam — Pulang: 19 Malam</strong></p>
-    <img src="bandung-trip.png" alt="Trip ke Bandung" class="gift" />
-    <p class="closing">I can't wait to go on this trip with you! 💕</p>
+    <div class="tabs">
+      <button class="tab-button active" data-tab="tab1">🎁 Oke deh hadiahnya ini</button>
+      <button class="tab-button" data-tab="tab2">🎉 Happy 22nd birthday</button>
+      <button class="tab-button" data-tab="tab3">🧳 One Day Trip ke Bandung</button>
+    </div>
+
+    <div class="tab-content" id="tab1">
+      <h2>🎁 Hadiah untukmu:</h2>
+      <p>✨ One Day Trip ke Bandung ✨</p>
+      <p><strong>Berangkat: 18 Malam — Pulang: 19 Malam</strong></p>
+      <img src="bandung-trip.png" alt="Trip ke Bandung" class="gift" />
+      <p class="closing">I can't wait to go on this trip with you! 💕</p>
+    </div>
+
+    <div class="tab-content" id="tab2" style="display: none;">
+      <h2>🎉 Happy 22nd birthday, lil troublemaker!</h2>
+      <p>You're not a teenager anymore, but you're still just as chaotic 😜</p>
+      <img src="IMG_5263.png" alt="Foto Cerlly & Teman" class="photo" />
+    </div>
+
+    <div class="tab-content" id="tab3" style="display: none;">
+      <h3>🧳 One Day Trip ke Bandung</h3>
+      <ul style="text-align:left; max-width:600px; margin: 0 auto;">
+        <li>Meeting point: Stasiun Gambir (18 malam)</li>
+        <li>Destinasi: Lembang, Braga, Kuliner</li>
+        <li>Pulang: 19 malam</li>
+        <li>Bawa jaket & good vibes 😄</li>
+      </ul>
+    </div>
   </div>
 
   <script>
@@ -105,6 +153,21 @@ html_code = """
           clickArea.style.display = "none";
         }
       }
+    });
+
+    // Tabs handler
+    const tabs = document.querySelectorAll(".tab-button");
+    const contents = document.querySelectorAll(".tab-content");
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        tabs.forEach((btn) => btn.classList.remove("active"));
+        contents.forEach((content) => (content.style.display = "none"));
+
+        tab.classList.add("active");
+        const target = tab.getAttribute("data-tab");
+        document.getElementById(target).style.display = "block";
+      });
     });
   </script>
 
